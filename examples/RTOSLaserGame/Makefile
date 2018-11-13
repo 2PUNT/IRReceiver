@@ -9,9 +9,9 @@
 #############################################################################
 
 # source files in this project (main.cpp is automatically assumed)
-SOURCES := IrReceiver.cpp MSGDecoderControl.cpp
+SOURCES := IrReceiver.cpp MSGDecoderControl.cpp EncodeDecodeMSG.cpp
 # header files in this project
-HEADERS := IrReceiver.hpp PauseDetectionControl.hpp MSGDecoderControl.hpp
+HEADERS := IrReceiver.hpp PauseDetectionControl.hpp MSGDecoderControl.hpp EncodeDecodeMSG.hpp message.hpp
 
 # other places to look for files for this project
 SEARCH  := ../../lib

@@ -1,9 +1,11 @@
 #ifndef HWLIB_IR_RECEIVER_HPP
 #define HWLIB_IR_RECEIVER_HPP
 
+#include "hwlib.hpp"
+
 class IrReceiver{
 private:
-    hwlib::target::pin_in &sensor;
+    hwlib::target::pin_in & sensor;
 public:
     IrReceiver(hwlib::target::pin_in &sensor):
         sensor(sensor)

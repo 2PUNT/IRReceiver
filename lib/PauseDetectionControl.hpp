@@ -8,9 +8,8 @@
 
 class PauseDetectionControl : public rtos::task<>{
 private:
-    hwlib::target::pin_in sensorPin;
-    IrReceiver sensor;
-    MSGDecoderControl Decoder;
+    IrReceiver & sensor;
+    MSGDecoderControl & Decoder;
     rtos::clock ReceiveClock;
     void main(){
         enum class state_t {IDLE,SIGNAL};
@@ -38,10 +37,11 @@ private:
         }
     }
 public:
-    PauseDetectionControl(hwlib::target::pin_in &sensorPin):
-        sensorPin(sensorPin),
-        sensor(sensorPin),
-        Decoder(),
+    PauseDetectionControl(const unsigned int priority, const char* taskName, IrReceiver & ir,
+      MSGDecoderControl & msg):
+        task(priority, taskName),
+        sensor(ir),
+        Decoder(msg),
         ReceiveClock(this,100,"ReceiveClock")
     {}
 };
