@@ -23,7 +23,7 @@ private:
                         Decoder.PauseDetected(n);
                         STATE = state_t::SIGNAL;
                     }else{
-                        n+=100;
+                        n+=50;
                     }
                     break;
                 case state_t::SIGNAL:
@@ -42,7 +42,7 @@ public:
         task(priority, taskName),
         sensor(ir),
         Decoder(msg),
-        ReceiveClock(this,100,"ReceiveClock")
+        ReceiveClock(this,50,"ReceiveClock")
     {}
 };
 
