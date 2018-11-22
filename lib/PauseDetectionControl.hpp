@@ -6,6 +6,9 @@
 #include "IrReceiver.hpp"
 #include "MSGDecoderControl.hpp"
 
+/// \brief Control object that manages the detection of ir-pauses
+/// \details PauseDetectionControl detects and measures the length of pauses in an ir-signal.
+/// It then sends the length of the pauses to a MSGDecoderControl for decoding.
 class PauseDetectionControl : public rtos::task<>{
 private:
     IrReceiver & sensor;
@@ -41,6 +44,12 @@ private:
         }
     }
 public:
+	/// \brief PauseDetectionControl constructor
+	/// \details Constructs a PauseDetectionControl object with the specified parameters.
+	/// @param priority The priority of this task.
+	/// @param taskName The name of the task, used in debugging.
+	/// @param ir Reference to the IrReceiver this class will use to detect ir-signals.
+	/// @param msg Reference to the MSGDecoderControl this class will send its pauseLengths to.
     PauseDetectionControl(const unsigned int priority, const char* taskName, IrReceiver & ir,
       MSGDecoderControl & msg):
         task(priority, taskName),
