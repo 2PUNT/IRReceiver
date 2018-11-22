@@ -24,7 +24,8 @@ private:
                         Decoder.PauseDetected(n);
                         STATE = state_t::SIGNAL;
                     }else{
-                        n+= hwlib::now_us() - startTimeUS;
+                        //n += 50;
+						n+= hwlib::now_us() - startTimeUS;
 						startTimeUS = hwlib::now_us();
                     }
                     break;
@@ -45,7 +46,7 @@ public:
         task(priority, taskName),
         sensor(ir),
         Decoder(msg),
-        ReceiveClock(this,100,"ReceiveClock")
+        ReceiveClock(this,50,"ReceiveClock")
     {}
 };
 
